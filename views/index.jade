@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	#clientMessages
+		input(type="text", data-bind="value: clientMessage")
+		button(data-bind="click: sendMessage") Submit Message
+	#serverMessages
+		table
+			caption Server Messages
+			thead
+				tr
+					th Timestamp
+					th Body
+			tbody(data-bind="foreach: serverMessages")
+				tr
+					td(data-bind="text: timestamp")
+					td(data-bind="text: body")
+
